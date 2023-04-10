@@ -41,9 +41,9 @@
 </body>
 
 <script>
-  let randomNumber = Math.random() * 10;
+  let randomNumber =  Math.floor(Math.random() * (100 - 1) + 1);
 
-  const ATTEMPS = 5;
+  const ATTEMPS = 10;
   const guesses = document.querySelector('.guesses');
   const lastResult = document.querySelector('.lastResult');
   const lowOrHi = document.querySelector('lowOrHi');
