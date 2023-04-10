@@ -23,7 +23,10 @@
       padding: 3px;
     }
 
-    
+    .lowOrHi{
+      color: white;
+      padding: 3p;
+    }
   </style>
 </head>
 
@@ -58,10 +61,21 @@
 
   let guessCount = 1;
   let resetButton;
-
+  var restrigir = true;
   function checkGuess() {
 
     let userGuess = guessField.value;
+
+    let restringirNumeros = /^[0-9]+$/;
+    if(!userGuess.match(restringirNumeros)){
+      alert('No es un numero entero positivo');
+      restrigir = false;
+    }else if(userGuess < 1 || userGuess > 100){
+      alert('El rango de numeros son de 0 a 100');
+      restrigir = false;
+    }
+
+    if(restrigir == true){
     if (guessCount == 1) {
       guesses.textContent = 'Número aleatorio anterior: ';
     }
@@ -90,7 +104,9 @@
       }
     }
 
-    guessCount++;
+         guessCount++;
+  }
+    restrigir = true;
     guessField.value = '';
     guessField.focus();
   }
@@ -107,7 +123,7 @@
 
   function resetGame() {
     guessCount = 1;
-
+    restrigir =true;
     const resetParas = document.querySelectorAll('.resultParas p');
     for (let i = 0; i < resetParas.length; i++) {
       resetParas[i].textContent = '';
@@ -125,4 +141,4 @@
   }
 </script>
 
-</html>x|
+</html>
